@@ -11,6 +11,13 @@
     --color-primary: #14b8a6;
     --color-red-jongveksi: #C2272D;
     --font-family-abhaya-sm: "Abhaya Libre", serif;
+    --font-family-abyssinica: "Abyssinica SIL", serif;
+    --font-Alconica:"Aclonica", sans-serif;
+    --color-merah-muda:#FFBCBF;
+    --color-Oren-muda:#F0BDA1;
+    --color-Grey:#D9D9D9;
+    --color-Grey-muda:#AB9C9C;
+  
     
     
    
@@ -21,7 +28,7 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 /* @keyframes Transtion-y-scroll {
@@ -79,7 +86,35 @@
 /* Utility kustom untuk animasi scroll */
 @utility animate-loop-scroll {
   animation: loop-scroll 20s linear infinite;
+  will-change: transform;
+    display: flex;
+
 }
+
+@utility paused {
+animation-play-state:paused;
+}
+
+/* Hilangkan scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* scroll manual smooth */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* biar geser di HP lembut */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+
 
 body{
     background-color: #edecec;
