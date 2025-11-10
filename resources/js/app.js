@@ -1,4 +1,10 @@
+
+
+
+
 import './bootstrap';
+// Initialization for ES Users
+
 
 // Navbar Fixed
 
@@ -72,42 +78,54 @@ if (produkDropdownBtn && produkDropdownMenu && produkDropdownIcon) {
     );
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show'); // optional: hilangkan saat scroll ke atas
-    }
-  });
-}, { threshold: 0.1 }); // 10% terlihat
+// Animation Scrolling 
+   document.addEventListener("DOMContentLoaded", () => {
+  const headers = document.querySelectorAll('.header');
+  const cards = document.querySelectorAll('.cardAnimate');
 
-// pilih semua elemen yang mau dianimasi
-document.querySelectorAll('.header').forEach(el => observer.observe(el));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 }); // 0.2 artinya animasi mulai ketika 20% elemen terlihat
+
+  headers.forEach(header => observer.observe(header));
+  cards.forEach(cardAnimate => observer.observe(cardAnimate));
+});
+
+// Untuk Animate Accouting Client, produksi sama tahun 
+function animateCount(id, target, duration = 600) {
+    let element = document.getElementById(id);
+    let start = 0;
+
+    let steps = 10; // cuma 10 kali naik -> super cepat
+    let stepValue = Math.ceil(target / steps);
+    let stepTime = duration / steps;
+
+    let timer = setInterval(() => {
+        start += stepValue;
+        if (start >= target) {
+            start = target;
+            clearInterval(timer);
+        }
+        element.innerText = start.toLocaleString("id-ID") + "+";
+    }, stepTime);
+}
 
 
-// Map OpenStreetMapOpenStreetMap & Leaflet.js
-var map = L.map('map').setView([-6.200450274074599, +106.53225717270713], 15);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+let observerCount = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCount("count1", 5000, 800);    // Client
+            animateCount("count2", 200000, 800);  // Produksi
+            animateCount("count3", 3, 800);      // Tahun
+            observerCount.disconnect(); // biar animasi hanya sekali
+        }
+    });
+});
 
-var marker = L.marker([-6.200450274074599, +106.53225717270713]).addTo(map);
+observerCount.observe(document.querySelector("#stats"));
 
-var circle = L.circle([-6.200450274074500, +106.53225717270700], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map);
-
-
-marker.bindPopup("<b>Jongveksi").openPopup();
-// circle.bindPopup("Perumahan Bukit Tiara .");
-// polygon.bindPopup("I am a polygon.");
-
-var popup = L.popup()
-    .setLatLng([-6.200450274074599, +106.53225717270713])
-    .setContent('  <a href="https://maps.app.goo.gl/aCGgfxJ3WndXsXHs6" target="_blank" style="color: black; text-decoration: none; font-weight: 500;">Jongveksi_id</a> ')
-    .openOn(map);
+// Start Custom Crousel JS

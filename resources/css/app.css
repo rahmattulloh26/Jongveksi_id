@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+
+@import "tailwindcss";
+
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,121 +8,206 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-family-bilbo:"Bilbo Swash Caps", cursive;
     --color-primary: #14b8a6;
-    --color-red-jongveksi: #C2272D;
+    --color-red-jongveksi: #c2272d;
+    --color-red-jongveksi-two: #fb0101;
     --font-family-abhaya-sm: "Abhaya Libre", serif;
     --font-family-abyssinica: "Abyssinica SIL", serif;
-    --font-Alconica:"Aclonica", sans-serif;
-    --color-merah-muda:#FFBCBF;
-    --color-Oren-muda:#F0BDA1;
-    --color-Grey:#D9D9D9;
-    --color-Grey-muda:#AB9C9C;
-  
-    
-    
-   
-   
+    --font-Alconica: "Aclonica", sans-serif;
+    --color-merah-muda: #ffbcbf;
+    --color-Oren-muda: #f0bda1;
+    --color-Grey: #d9d9d9;
+    --color-Grey-muda: #ab9c9c;
+    --color-body: #edecec;
+     --color-black-jonveksi: #2E3840;
+     
+
 }
 @keyframes loop-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-/* @keyframes Transtion-y-scroll {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-    clip-path: inset(100% 100% 0 0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    clip-path: inset(0 0 0 0);
-  }
-} */
-
-.header {
-  animation: Transtion-y-scroll 2s linear forwards;
-  animation-timeline: view();
-   /* animation-range: entry 1% cover 0%; */
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
-/* initial state */
-.header {
-  opacity: 0;
-  transform: translateX(30px) scale(0.5);
-  transition: all 0.8s ease-out;
+@keyframes loop-scroll-top-to-bottom {
+    0% {
+        transform: translateY(-20%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
-/* state saat terlihat */
-.header.show {
-  opacity: 1;
-  transform: translateX(0) scale(1);
+.animate-loop-scroll-top-to-bottom {
+    animation: loop-scroll-top-to-bottom  2s linear forwards;
 }
+
+
+@keyframes loop-scroll-bottom-to-top {
+    0% {
+        transform: translateY(20%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.animate-loop-scroll-bottom-to-top {
+    animation: loop-scroll-bottom-to-top 1s linear forwards;
+}
+
+@keyframes loop-scroll-bottom-to-top-Two {
+    0% {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-2%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-loop-scroll-bottom-to-top-Two {
+    animation: loop-scroll-bottom-to-top-Two 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    will-change: transform, opacity;
+}
+
+@layer header_one {
+    @keyframes Transition-y-scroll {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .header {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        transition: all 0.8s ease-out;
+    }
+
+    .header.show {
+        opacity: 1;
+        animation: Transition-y-scroll 1s ease-out forwards;
+    }
+
+
+       @keyframes Transition-y-scroll-Card {
+        from {
+            opacity: ;
+            transform: translateY(200px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .cardAnimate {
+        opacity: 0;
+        transform: translateY(100px) scale(0.9);
+        transition: all 0.9s ease-out;
+    }
+
+    .cardAnimate.show {
+        opacity: 1;
+        animation: Transition-y-scroll-Card 1s ease-out forwards;
+    }
+
+}
+
 
 
 /* Contoh custom screen untuk gambar / layout */
 @media (min-width: 1055px) {
-  .custom-desktop {
-    display: flex;
-    justify-content: end;  /* contoh: gambar ke kanan */
-    width: 50%;            /* setengah lebar */
-    margin-top: 0;         /* hilangkan margin atas */
-  }
+    .custom-desktop {
+        display: flex;
+        justify-content: end; /* contoh: gambar ke kanan */
+        width: 50%; /* setengah lebar */
+        margin-top: 0; /* hilangkan margin atas */
+    }
 }
 
 @media (max-width: 1054px) {
-  .custom-mobile {
-    display: flex;
-    justify-content: center; /* gambar di tengah */
-    width: 100%;
-    margin-top: 2rem;       /* margin atas mobile */
-  }
+    .custom-mobile {
+        display: flex;
+        justify-content: center; /* gambar di tengah */
+        width: 100%;
+        margin-top: 2rem; /* margin atas mobile */
+    }
 }
 
 /* Utility kustom untuk animasi scroll */
-@utility animate-loop-scroll {
-  animation: loop-scroll 20s linear infinite;
-  will-change: transform;
-    display: flex;
+@layer utilities {
+    .animate-loop-scroll {
+        animation: loop-scroll 20s linear infinite;
+        will-change: transform;
+        display: flex;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hilangkan scrollbar */
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    /* scroll manual smooth */
+    .scroll-smooth {
+        scroll-behavior: smooth;
+    }
+    /* biar geser di HP lembut */
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+    }
+    .button{
+      background-color: var(--color-red-jongveksi);
+      color: var(--color-white);
+      font-family: var(--font-family-abyssinica);
+
+    }
+    .button:hover{
+       background-color: var(--color-black-jonveksi);
+      color: var(--color-white);
+    }
+    /* For Animate / Transition Card  */
+.card {
+    /* border-radius: var(--radius-xl); */
+    box-shadow: var(--shadow-xl);
+    transition: all 300ms ease-in-out;
+    transform: scale(1);
+}
+
+.card:hover {
+    overflow: visible;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-2xl);
+}
+
+
+/* .card-wreaper{
+    overflow:hidden;
+} */
 
 }
 
-@utility paused {
-animation-play-state:paused;
+.btnLayanan{
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
 }
-
-/* Hilangkan scrollbar */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* scroll manual smooth */
-.scroll-smooth {
-  scroll-behavior: smooth;
-}
-
-/* biar geser di HP lembut */
-.overflow-x-auto {
-  -webkit-overflow-scrolling: touch;
-}
-
-
-
-body{
-    background-color: #edecec;
-}
-
-
-
-
 
