@@ -16,6 +16,7 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
-        "tailwindcss": "^4.1.14"
+        "tailwindcss": "^4.1.14",
+        "tw-elements": "^2.0.0"
     }
 }
