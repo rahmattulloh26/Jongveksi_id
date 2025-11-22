@@ -48,50 +48,43 @@
             </div>
 
             <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="{{ route('login-auth') }}" method="POST" class="space-y-6 font-family-abhaya-sm">
+                <form action="{{ route('create') }}" method="POST" class="space-y-6 font-family-abhaya-sm">
                     @csrf
-
-                    @if ($errors -> any() )
-                        <div class="alert text-red-jongveksi text-center">
+                    {{-- <label for="email"
+                            class="block text-sm/6 font-medium text-red-jongveksi tracking-[2px]">Email address</label> --}}
+                    @if ($errors->any())
+                        <div class="alert text-red-jongveksi">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }} !. </li>
+                                @foreach ($errors->all() as $error )
+                                <li>   {{ $error }} !  </li>
                                 @endforeach
+                                
                             </ul>
                         </div>
                         
                     @endif
 
-                    {{-- <label for="email"
-                            class="block text-sm/6 font-medium text-red-jongveksi tracking-[2px]">Email address</label> --}}
+                    <div class="mt-2">
+                        <input id="name" value="{{ Session::get('name') }}" type="text" name="name" required
+                            autocomplete="name" placeholder="Your Username"
+                            class="block w-full rounded-md bg-white-jongveksi  outline-red-jongveksi  shadow-white border-red-jongveksi  shadow-black shadow-6xl px-3 py-3 md:py-4 text-base outline-1 -outline-offset-1  placeholder:text-gray-500   placeholder:tracking-[3px] focus:outline-2 focus:-outline-offset-2 focus:outline-red-jongveksi sm:text-sm/6" />
+                    </div>
                     <div class="mt-2">
                         <input id="email" value="{{ Session::get('email') }}" type="email" name="email" required
                             autocomplete="email" placeholder="Your Email Address"
                             class="block w-full rounded-md bg-white-jongveksi  outline-red-jongveksi  shadow-white border-red-jongveksi  shadow-black shadow-6xl px-3 py-3 md:py-4 text-base outline-1 -outline-offset-1  placeholder:text-gray-500   placeholder:tracking-[3px] focus:outline-2 focus:-outline-offset-2 focus:outline-red-jongveksi sm:text-sm/6" />
                     </div>
-
-
                     <div>
-
                         <div class="mt-2">
                             <input id="password" type="password" name="password" required
                                 autocomplete="current-password" placeholder="Your Password"
                                 class="block w-full rounded-md bg-white-jongveksi  outline-red-jongveksi  shadow-white border-red-jongveksi  shadow-black shadow-6xl px-3 py-3 md:py-4 text-base outline-1 -outline-offset-1  placeholder:text-gray-500  placeholder:tracking-[3px] focus:outline-2 focus:-outline-offset-2 focus:outline-red-jongveksi sm:text-sm/6" />
                         </div>
-
                         <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
-                        <div class="text-sm">
-                            <a href="#" class="font-semibold tracking-[1px] text-red-jongveksi  ">Forgot
-                                password?</a>
-                        </div>
                     </div>
-
-
-
                     <div>
                         <button type="submit"
-                            class="flex w-full justify-center rounded-md bg-red-jongveksi px-3 py-3 text-md tracking-[1-px] font-semibold text-white hover:bg-black-jonveksi focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-jongveksi">Sign
-                            in</button>
+                            class="flex w-full justify-center rounded-md bg-red-jongveksi px-3 py-3 text-md tracking-[2px] font-semibold text-white hover:bg-black-jonveksi focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-jongveksi">Register</button>
                     </div>
                 </form>
 

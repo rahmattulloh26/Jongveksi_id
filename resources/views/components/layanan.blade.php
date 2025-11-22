@@ -3,10 +3,10 @@
 @section('layanan')
 
 <div class=" flex justify-center items-center mt-6 md:mt-8 py-3">
-    <button type="submit"
+   <a href="{{ route('produk.catalog') }}" 
         class="header rounded-[1px] bg-red-jongveksi px-4 md:px-6 py-3 text-white font-family-abyssinica text-sm transition">
         Lihat Semua Detail Product
-    </button>
+</a>
 </div>
 
 <div class=" flex flex-col px-[20px] md:px-[100px] xl:px-[200px] justify-center items-center mt-5 font-family-abhaya-sm leading-relaxed">

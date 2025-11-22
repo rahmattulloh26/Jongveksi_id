@@ -38,79 +38,25 @@
 
 <body class="bg-white">
 
+    <div class="w-full relative mt-50 md:mt-60 ">
+        <div class="container mx-auto  px-[40px] md:px-[100px] xl:px-[150px] ">
+            <div class="flex justify-center text-center items-center ">
+                <img src="/src/img/logo.png" alt="" class="w-70 md:w-100" srcset="">
+            </div>
 
-
-@auth
-    {{-- Sidebar --}}
-    @include('components.sidebar')
-     <div id="main-content" class="p-4">
-            <div class="overflow-y-auto">
-                @yield('dashboard-jongveksi')
+            <div
+                class="flex flex-col md:flex-row mt-15 md:mt-10 text-center md:justify-center gap-8 font-family-abyssinica tracking-[2px]">
+                <a href="{{ route('login') }}"
+                    class="bg-red-jongveksi py-3 md:py-2 md:px-[70px] rounded-sm text-white hover:bg-black-jonveksi shadow-xl/30 ">
+                    Login
+                </a>
+                <a href="{{ route('register.form') }}"
+                    class="border-1 py-3  md:py-2 md:px-[65px] rounded-sm text-red-jongveksi shadow-xl/30 hover:shadow-none hover:bg-black-jonveksi hover:text-white">
+                    Sign Up
+                </a>
             </div>
         </div>
+
     </div>
-</div>
-@endauth
-
-
-    @guest
-        @include('components.header')
-    
-    {{-- Header > Index.blade --}}
-    @yield('HeadDashboard')
-    {{-- End Head Dashboard --}}
-
-    {{-- Klien > index.blade --}}
-    @yield('klien')
-    {{-- End Klien --}}
-
-    {{-- Head Catalog > Index.blade --}}
-    @yield('HeadCatalog')
-    {{-- End Header  --}}
-
-        {{-- Catalog => Component > Swiper / slider --}}
-    @yield('detail-produk')
-    @stack('detail-produk')
-    {{-- End Swiper --}}
-    
-    {{-- Catalog => Component > Catalog --}}
-    @yield('catalog')
-    {{-- End Catalog --}}
-
-    {{-- Catalog => Component > Swiper / slider --}}
-    @yield('swiper')
-    @stack('crousel')
-    {{-- End Swiper --}}
-
-
-    
-    {{-- Layanan-Jongveksi => Elements  > layanan --}}
-    @yield('layanan-jongveksi')
-    {{-- Ends Layanan --}}
-
-    {{-- About => Elements > About --}}
-    @yield('about')
-    {{-- Ends About --}}
-
-
-
-
-    {{-- Layanan --}}
-    @yield('layanan')
-    {{-- Ends Layanan --}}
-
-   
-    
-
-    
-    {{-- Component Footer => Component > Footer  --}}
-  
-    @include('components.footer')
-    @stack('map')
-    {{-- Ends Footer --}}
-    @endguest
-    
 
 </body>
-
-</html>
