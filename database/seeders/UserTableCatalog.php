@@ -2,28 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class DatabaseSeeder extends Seeder
+class UserTableCatalog extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-         DB::table('products')->insert([
+     DB::table('products')->insert([
             'name_produk' => 'Agustin',
-            'proce' => '100.000',
+            'sub_judul' => 'ganteng',
+            'price' => '100.000',
             'description' => 'Agustin',
-            'image' => 'Agustin', 
+            'image' => 'Agustin',
         ]);
-    }
-    }
-
+}
+}
